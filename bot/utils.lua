@@ -530,22 +530,39 @@ function unescape_html(str)
 end
 
 
+
 --Check if this chat is realm or not
 function is_realm(msg)
   local var = false
-  for v,group in pairs(_config.realm) do
-    if group == msg.to.id then
-      var = true
-    end
+  local realms = 'realms'
+  local data = load_data(_config.moderation.data)
+  local chat = msg.to.id
+  if data[tostring(realms)] then
+    if data[tostring(realms)][tostring(msg.to.id)] then
+       var = true
+       end
+       return var
   end
-  return var
+end
+--Check if this chat is a group or not
+function is_group(msg)
+  local var = false
+  local groups = 'groups'
+  local data = load_data(_config.moderation.data)
+  local chat = msg.to.id
+  if data[tostring(groups)] then
+    if data[tostring(groups)][tostring(msg.to.id)] then
+       var = true
+       end
+       return var
+  end
 end
 
 
 function savelog(group, logtxt)
 
 local text = (os.date("[ %c ]=>  "..logtxt.."\n \n"))
-local file = io.open("./groups/"..group.."log.txt", "a")
+local file = io.open("./groups/logs/"..group.."log.txt", "a")
 
 file:write(text)
 
@@ -663,7 +680,6 @@ function is_momod(msg)
   local var = false
   local data = load_data(_config.moderation.data)
   local user = msg.from.id
-  
   if data[tostring(msg.to.id)] then
     if data[tostring(msg.to.id)]['moderators'] then
       if data[tostring(msg.to.id)]['moderators'][tostring(user)] then
