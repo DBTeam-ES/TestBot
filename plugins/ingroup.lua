@@ -1258,8 +1258,4 @@ return {
   run = run
 }
 end
-<<<<<<< HEAD
-=======
 
-
->>>>>>> refs/remotes/SEEDTEAM/master
