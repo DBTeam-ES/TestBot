@@ -208,19 +208,28 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
-    "meme",
+    "onservice",
     "plugins",
+    "inrealm",
+    "ingroup",
+    "inpm",
     "banhammer",
+    "stats",
+    "anti_spam",
+    "owners",
+    "arabic_lock",
+    "set",
+    "get",
+    "broadcast",
+    "download_media",
+    "invite",
     "all",
-    "google",
-    "gif",
-    "img",
-    "help"
+    "leave_ban",
+    "admin"
     },
     sudo_users = {TUIDEAQUI,tonumber(our_id)},--Sudo users
     disabled_channels = {},
     moderation = {data = 'data/moderation.json'},
-    about_text = [[Tesbot DBT v1]],
     help_text_realm = [[
 Realm Commands:
 
@@ -296,7 +305,6 @@ This command will send text to [group_id]
 *Only admins and sudo can use res, setowner, commands
 ]],
     help_text = [[
-
 Commands list :
 
 !kick [username|id]
