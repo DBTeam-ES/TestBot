@@ -208,21 +208,6 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
-    "onservice",
-    "arabic_lock",
-    "inrealm",
-    "ingroup",
-    "inpm",
-    "banhammer",
-    "stats",
-    "anti_spam",
-    "owners",
-    "set",
-    "get",
-    "broadcast",
-    "download_media",
-    "invite",
-<<<<<<< HEAD
     "meme",
     "plugins",
     "greeter",
@@ -233,38 +218,10 @@ function create_config( )
     "help"
     },
     sudo_users = {TUIDEAQUI,tonumber(our_id)},--Sudo users
-=======
-    "all",
-    "leave_ban",
-    "admin"
-    },
-    sudo_users = {110626080,103649648,111020322,111020322,0,tonumber(our_id)},--Sudo users
->>>>>>> refs/remotes/SEEDTEAM/master
     disabled_channels = {},
     moderation = {data = 'data/moderation.json'},
 <<<<<<< HEAD
     about_text = [[Tesbot DBT v1]],
-=======
-    about_text = [[Teleseed v2 - Open Source
-An advance Administration bot based on yagop/telegram-bot 
-
-https://github.com/SEEDTEAM/TeleSeed
-
-Admins
-@iwals [Founder]
-@imandaneshi [Developer]
-@Rondoozle [Developer]
-@seyedan25 [Manager]
-
-Special thanks to
-awkward_potato
-Siyanew
-topkecleon
-Vamptacus
-
-Our channels
-@teleseedch [English]
-@iranseed [persian]
 ]],
     help_text_realm = [[
 Realm Commands:
