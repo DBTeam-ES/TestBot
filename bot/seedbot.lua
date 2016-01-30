@@ -221,7 +221,6 @@ function create_config( )
     disabled_channels = {},
     moderation = {data = 'data/moderation.json'},
     about_text = [[Tesbot DBT v1]],
-]],
     help_text_realm = [[
 Realm Commands:
 
