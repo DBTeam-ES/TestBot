@@ -210,7 +210,7 @@ function create_config( )
     enabled_plugins = {
     "meme",
     "plugins",
-    "greeter",
+    "banhammer",
     "all",
     "google",
     "gif",
@@ -297,7 +297,6 @@ This command will send text to [group_id]
 
 *Only admins and sudo can use res, setowner, commands
 ]],
->>>>>>> refs/remotes/SEEDTEAM/master
     help_text = [[
 
 Commands list :
