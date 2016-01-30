@@ -220,7 +220,6 @@ function create_config( )
     sudo_users = {TUIDEAQUI,tonumber(our_id)},--Sudo users
     disabled_channels = {},
     moderation = {data = 'data/moderation.json'},
-<<<<<<< HEAD
     about_text = [[Tesbot DBT v1]],
 ]],
     help_text_realm = [[
