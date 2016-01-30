@@ -15,13 +15,17 @@ function on_msg_receive (msg)
   local receiver = get_receiver(msg)
   print (receiver)
 
-  -- vardump(msg)
+  --vardump(msg)
   msg = pre_process_service_msg(msg)
   if msg_valid(msg) then
     msg = pre_process_msg(msg)
     if msg then
       match_plugins(msg)
-  --   mark_read(receiver, ok_cb, false)
+      if redis:get("bot:markread") then
+        if redis:get("bot:markread") == "on" then
+          mark_read(receiver, ok_cb, false)
+        end
+      end
     end
   end
 end
@@ -218,6 +222,7 @@ function create_config( )
     "broadcast",
     "download_media",
     "invite",
+<<<<<<< HEAD
     "meme",
     "plugins",
     "greeter",
@@ -228,10 +233,114 @@ function create_config( )
     "help"
     },
     sudo_users = {TUIDEAQUI,tonumber(our_id)},--Sudo users
+=======
+    "all",
+    "leave_ban",
+    "admin"
+    },
+    sudo_users = {110626080,103649648,111020322,111020322,0,tonumber(our_id)},--Sudo users
+>>>>>>> refs/remotes/SEEDTEAM/master
     disabled_channels = {},
-    realm = {},--Realms Id
     moderation = {data = 'data/moderation.json'},
+<<<<<<< HEAD
     about_text = [[Tesbot DBT v1]],
+=======
+    about_text = [[Teleseed v2 - Open Source
+An advance Administration bot based on yagop/telegram-bot 
+
+https://github.com/SEEDTEAM/TeleSeed
+
+Admins
+@iwals [Founder]
+@imandaneshi [Developer]
+@Rondoozle [Developer]
+@seyedan25 [Manager]
+
+Special thanks to
+awkward_potato
+Siyanew
+topkecleon
+Vamptacus
+
+Our channels
+@teleseedch [English]
+@iranseed [persian]
+]],
+    help_text_realm = [[
+Realm Commands:
+
+!creategroup [Name]
+Create a group
+
+!createrealm [Name]
+Create a realm
+
+!setname [Name]
+Set realm name
+
+!setabout [GroupID] [Text]
+Set a group's about text
+
+!setrules [GroupID] [Text]
+Set a group's rules
+
+!lock [GroupID] [setting]
+Lock a group's setting
+
+!unlock [GroupID] [setting]
+Unock a group's setting
+
+!wholist
+Get a list of members in group/realm
+
+!who
+Get a file of members in group/realm
+
+!type
+Get group type
+
+!kill chat [GroupID]
+Kick all memebers and delete group
+
+!kill realm [RealmID]
+Kick all members and delete realm
+
+!addadmin [id|username]
+Promote an admin by id OR username *Sudo only
+
+!removeadmin [id|username]
+Demote an admin by id OR username *Sudo only
+
+!list groups
+Get a list of all groups
+
+!list realms
+Get a list of all realms
+
+!log
+Grt a logfile of current group or realm
+
+!broadcast [text]
+!broadcast Hello !
+Send text to all groups
+Only sudo users can run this command
+
+!bc [group_id] [text]
+!bc 123456789 Hello !
+This command will send text to [group_id]
+
+
+**U can use both "/" and "!" 
+
+
+*Only admins and sudo can add bots in group
+
+
+*Only admins and sudo can use kick,ban,unban,newlink,setphoto,setname,lock,unlock,set rules,set about and settings commands
+
+*Only admins and sudo can use res, setowner, commands
+]],
+>>>>>>> refs/remotes/SEEDTEAM/master
     help_text = [[
 
 Commands list :
@@ -277,11 +386,11 @@ return group id or user id
 
 !help
 
-!lock [member|name|bots]
-Locks [member|name|bots] 
+!lock [member|name|bots|leave]	
+Locks [member|name|bots|leaveing] 
 
-!unlock [member|name|photo|bots]
-Unlocks [member|name|photo|bots]
+!unlock [member|name|bots|leave]
+Unlocks [member|name|bots|leaving]
 
 !set rules <text>
 Set <text> as rules
@@ -340,7 +449,6 @@ will return group ban list
 *Only owner can use res,setowner,promote,demote and log commands
 
 ]]
-
   }
   serialize_to_file(config, './data/config.lua')
   print('saved config into ./data/config.lua')
@@ -377,6 +485,7 @@ function load_plugins()
 
     if not ok then
       print('\27[31mError loading plugin '..v..'\27[39m')
+      print(tostring(io.popen("lua plugins/"..v..".lua"):read('*all')))
       print('\27[31m'..err..'\27[39m')
     end
 

@@ -15,15 +15,8 @@ local function pre_process(msg)
   if msg.from.id == our_id then
     return msg
   end
-  --Load moderation data
-  local data = load_data(_config.moderation.data)
-  if data[tostring(msg.to.id)] then
-    --Check if flood is one or off
-    if data[tostring(msg.to.id)]['settings']['flood'] == 'no' then
-      return msg
-    end
-  end
-  -- Save user on Redis
+  
+    -- Save user on Redis
   if msg.from.type == 'user' then
     local hash = 'user:'..msg.from.id
     print('Saving user', hash)
@@ -51,6 +44,15 @@ local function pre_process(msg)
   local hash = 'msgs:'..msg.from.id..':'..msg.to.id
   redis:incr(hash)
 
+  --Load moderation data
+  local data = load_data(_config.moderation.data)
+  if data[tostring(msg.to.id)] then
+    --Check if flood is one or off
+    if data[tostring(msg.to.id)]['settings']['flood'] == 'no' then
+      return msg
+    end
+  end
+
   -- Check flood
   if msg.from.type == 'user' then
     local hash = 'user:'..msg.from.id..':msgs'
@@ -76,6 +78,9 @@ local function pre_process(msg)
         return
       end
       kick_user(user, chat)
+      if msg.chat.type == "user" then
+        block_user("user#id"..msg.from.id,ok_cb,false)--Block user if spammed in private
+      end
       local name = user_print_name(msg.from)
       --save it to log file
       savelog(msg.to.id, name.." ["..msg.from.id.."] spammed and kicked ! ")
@@ -114,7 +119,7 @@ end
 
 local function cron()
   --clear that table on the top of the plugins
-	kicktable = {}
+  kicktable = {}
 end
 
 return {
