@@ -452,19 +452,11 @@ function run(msg, matches)
 		local receiver = get_receiver(msg)
 		chat_info(receiver, returnidsfile, {receiver=receiver})
 	end
-<<<<<<< HEAD
 if matches[1] == 'ids' and is_momod(msg) then
 local name = user_print_name(msg.from)
 savelog(msg.to.id, name.." ["..msg.from.id.."] requested member list in a file")
 local receiver = get_receiver(msg)
 chat_info(receiver, returnids, {receiver=receiver})
-=======
-	if matches[1] == 'wholist' and is_momod(msg) then
-		local name = user_print_name(msg.from)
-		savelog(msg.to.id, name.." ["..msg.from.id.."] requested member list in a file")
-		local receiver = get_receiver(msg)
-		chat_info(receiver, returnids, {receiver=receiver})
->>>>>>> refs/remotes/SEEDTEAM/master
 	end
 
     if matches[1] == 'creategroup' and matches[2] then
