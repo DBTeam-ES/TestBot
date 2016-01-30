@@ -342,7 +342,7 @@ sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-d
 
 ```bash
 # lets install the bot
-cd $HOME
+
 git clone https://github.com/Desarrollo-Bots-Telegram-ES/TestBot.git
 cd TestBot
 chmod +x launch.sh
