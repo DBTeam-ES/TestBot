@@ -18,7 +18,7 @@
 * **And ...**
 
 **Table of Contents** 
-- [TeleSeed](#teleseed)
+- [TestBot]
 - [Features](#features)
 - [Commands](#commands)
 	- [Admins commands](#admins-commands)
@@ -457,10 +457,6 @@ open file ./data/config.lua
 add your id to the "sudo_users" section in the following format:
 ```
   sudo_users = {
-    110626080,
-    103649648,
-    111020322,
-    0,
     YourID
   }
 ```
@@ -468,45 +464,9 @@ then start the bot again
 
 Create a realm using !createrealm command
 
-
-# Support and development
-
-Check out this tutorial by: [Telegram Geeks](http://telegramgeeks.com/2016/01/teleseed-tutorial/) for further assistance with setup and installation.
-
-Do not contact **us** In private for support.
-
-<<<<<<< HEAD
 Para entrar en el grupo de desarrollo del bot pedir la entrada a [@skneos](https://telegram.me/skneos)
 
-_If you are using /join service for first time you have to send it 11 time ( Bot is spam reported )_
-=======
-_If you are using /join service for first time you have to send it 11 times ( Bot is spam reported )_
 
-# Special thanks to
-[@seyedan25](https://telegram.me/seyedan25)
-
-For Managing [@teleseed](https://telegram.me/TeleSeed) on Telegram
-
-[@Vamptacus](https://telegram.me/Vamptacus)
-
-For graphic designs
-
-[@topkecleon](https://github.com/topkecleon)
-
-[@JuanPotato](https://github.com/JuanPotato)
-
-# Our team!
-
-[Alphonse](https://github.com/hmon) ([Telegram](https://telegram.me/iwals))
-
-[I M /-\ N](https://github.com/imandaneshi) ([Telegram](https://telegram.me/imandaneshi))
->>>>>>> refs/remotes/SEEDTEAM/master
-
-
-<<<<<<< HEAD
 Nuestro canal > [@BotsTelegramES](https://telegram.me/BotsTelegramES)
 =======
-[Rondoozle](https://github.com/Rondoozle) ([Telegram](https://telegram.me/Rondoozle))
 
-Our Telegram cahnnels > English: [@TeleSeedCH](https://telegram.me/teleseedch) Persian: [@IranSeed](https://telegram.me/iranseed)
->>>>>>> refs/remotes/SEEDTEAM/master
