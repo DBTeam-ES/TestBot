@@ -51,9 +51,9 @@ end
 
 function getLockState(msg, data)
 	if ( data[tostring(msg.to.id)]["settings"]["StickerLock"] == "yes" ) then
-		return "Stickers Bloqueados :) ";
+		return "Los Stickers en : " ..string.gsub(msg.to.print_name, "_", " ").. " Estan Bloqueados :) ";
 	elseif ( data[tostring(msg.to.id)]["settings"]["StickerLock"] == "no" ) then
-		return "Stickers Desbloqueados :) ";
+		return "Los Stickers en : " ..string.gsub(msg.to.print_name, "_", " ").. " Estan Desbloqueados :) ";
 	end
 end
 
@@ -93,14 +93,23 @@ function on_msg_receive( msg )
 	if ( msg.text == "/st on" ) then
 		send_large_msg ( R , LockStickers(msg, data) );
 		save_data(_config.moderation.data, data);
+	elseif ( msg.text == "!st on" ) then
+		send_large_msg ( R , LockStickers(msg, data) );
+		save_data(_config.moderation.data, data);
 		
 	elseif ( msg.text == "/st off" ) then
+		send_large_msg ( R , UnLockStickers(msg, data) );
+		save_data(_config.moderation.data, data);
+	elseif ( msg.text == "!st off" ) then
 		send_large_msg ( R , UnLockStickers(msg, data) );
 		save_data(_config.moderation.data, data);
 		
 	elseif ( msg.text == "/st info" ) then
 		send_large_msg ( R , getLockState(msg, data) );
+	elseif ( msg.text == "!st info" ) then
+		send_large_msg ( R , getLockState(msg, data) );
 	end
+
 
 
 	if ( checkMedia(msg) and checkLockState(msg, data) ) then
@@ -124,7 +133,7 @@ end
 
 return {
 	patterns = {
-		"/(sticker) (.+)"
+		"/(sticker) (.+)",
   	},
   	run = run
 } 
